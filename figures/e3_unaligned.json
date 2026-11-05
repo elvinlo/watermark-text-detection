@@ -1,0 +1,30 @@
+{
+ "200": {
+  "aligned oracle": 0.1775,
+  "token HC (order-blind)": 0.0725,
+  "single grid, true length": 0.1075,
+  "4 shifted grids, length 80": 0.115,
+  "multiscale (length unknown)": 0.11
+ },
+ "400": {
+  "aligned oracle": 0.2725,
+  "token HC (order-blind)": 0.0725,
+  "single grid, true length": 0.1775,
+  "4 shifted grids, length 80": 0.2025,
+  "multiscale (length unknown)": 0.18
+ },
+ "800": {
+  "aligned oracle": 0.47,
+  "token HC (order-blind)": 0.115,
+  "single grid, true length": 0.3075,
+  "4 shifted grids, length 80": 0.355,
+  "multiscale (length unknown)": 0.375
+ },
+ "1600": {
+  "aligned oracle": 0.84,
+  "token HC (order-blind)": 0.285,
+  "single grid, true length": 0.53,
+  "4 shifted grids, length 80": 0.6775,
+  "multiscale (length unknown)": 0.7125
+ }
+}

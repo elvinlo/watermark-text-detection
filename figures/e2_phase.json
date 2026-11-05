@@ -1,0 +1,177 @@
+{
+ "0.25,0.25": {
+  "token HC (order-blind)": 0.17333333333333334,
+  "count psi* (key-only)": 0.26666666666666666,
+  "oracle LLR psi*": 0.32,
+  "m": 23,
+  "delta": 0.006092113891640144
+ },
+ "0.25,0.3": {
+  "token HC (order-blind)": 0.07666666666666666,
+  "count psi* (key-only)": 0.17666666666666667,
+  "oracle LLR psi*": 0.24666666666666667,
+  "m": 12,
+  "delta": 0.006092113891640144
+ },
+ "0.25,0.35": {
+  "token HC (order-blind)": 0.03666666666666667,
+  "count psi* (key-only)": 0.08333333333333333,
+  "oracle LLR psi*": 0.11,
+  "m": 6,
+  "delta": 0.006092113891640144
+ },
+ "0.25,0.4": {
+  "token HC (order-blind)": 0.06,
+  "count psi* (key-only)": 0.06666666666666667,
+  "oracle LLR psi*": 0.07666666666666666,
+  "m": 3,
+  "delta": 0.006092113891640144
+ },
+ "0.25,0.45": {
+  "token HC (order-blind)": 0.056666666666666664,
+  "count psi* (key-only)": 0.056666666666666664,
+  "oracle LLR psi*": 0.07333333333333333,
+  "m": 2,
+  "delta": 0.006092113891640144
+ },
+ "0.5,0.25": {
+  "token HC (order-blind)": 0.42,
+  "count psi* (key-only)": 0.63,
+  "oracle LLR psi*": 0.7533333333333333,
+  "m": 23,
+  "delta": 0.012184227783280288
+ },
+ "0.5,0.3": {
+  "token HC (order-blind)": 0.17666666666666667,
+  "count psi* (key-only)": 0.27,
+  "oracle LLR psi*": 0.35333333333333333,
+  "m": 12,
+  "delta": 0.012184227783280288
+ },
+ "0.5,0.35": {
+  "token HC (order-blind)": 0.09,
+  "count psi* (key-only)": 0.16,
+  "oracle LLR psi*": 0.18,
+  "m": 6,
+  "delta": 0.012184227783280288
+ },
+ "0.5,0.4": {
+  "token HC (order-blind)": 0.10666666666666667,
+  "count psi* (key-only)": 0.09666666666666666,
+  "oracle LLR psi*": 0.11333333333333333,
+  "m": 3,
+  "delta": 0.012184227783280288
+ },
+ "0.5,0.45": {
+  "token HC (order-blind)": 0.08,
+  "count psi* (key-only)": 0.04666666666666667,
+  "oracle LLR psi*": 0.08666666666666667,
+  "m": 2,
+  "delta": 0.012184227783280288
+ },
+ "1.0,0.25": {
+  "token HC (order-blind)": 0.49,
+  "count psi* (key-only)": 0.9866666666666667,
+  "oracle LLR psi*": 1.0,
+  "m": 23,
+  "delta": 0.024368455566560577
+ },
+ "1.0,0.3": {
+  "token HC (order-blind)": 0.13,
+  "count psi* (key-only)": 0.6933333333333334,
+  "oracle LLR psi*": 0.9033333333333333,
+  "m": 12,
+  "delta": 0.024368455566560577
+ },
+ "1.0,0.35": {
+  "token HC (order-blind)": 0.07333333333333333,
+  "count psi* (key-only)": 0.37666666666666665,
+  "oracle LLR psi*": 0.5133333333333333,
+  "m": 6,
+  "delta": 0.024368455566560577
+ },
+ "1.0,0.4": {
+  "token HC (order-blind)": 0.03333333333333333,
+  "count psi* (key-only)": 0.22666666666666666,
+  "oracle LLR psi*": 0.35,
+  "m": 3,
+  "delta": 0.024368455566560577
+ },
+ "1.0,0.45": {
+  "token HC (order-blind)": 0.02666666666666667,
+  "count psi* (key-only)": 0.14,
+  "oracle LLR psi*": 0.2,
+  "m": 2,
+  "delta": 0.024368455566560577
+ },
+ "2.0,0.25": {
+  "token HC (order-blind)": 0.9,
+  "count psi* (key-only)": 1.0,
+  "oracle LLR psi*": 1.0,
+  "m": 23,
+  "delta": 0.048736911133121154
+ },
+ "2.0,0.3": {
+  "token HC (order-blind)": 0.43666666666666665,
+  "count psi* (key-only)": 1.0,
+  "oracle LLR psi*": 1.0,
+  "m": 12,
+  "delta": 0.048736911133121154
+ },
+ "2.0,0.35": {
+  "token HC (order-blind)": 0.14666666666666667,
+  "count psi* (key-only)": 0.9133333333333333,
+  "oracle LLR psi*": 0.98,
+  "m": 6,
+  "delta": 0.048736911133121154
+ },
+ "2.0,0.4": {
+  "token HC (order-blind)": 0.09666666666666666,
+  "count psi* (key-only)": 0.6266666666666667,
+  "oracle LLR psi*": 0.8166666666666667,
+  "m": 3,
+  "delta": 0.048736911133121154
+ },
+ "2.0,0.45": {
+  "token HC (order-blind)": 0.1,
+  "count psi* (key-only)": 0.4633333333333333,
+  "oracle LLR psi*": 0.6933333333333334,
+  "m": 2,
+  "delta": 0.048736911133121154
+ },
+ "3.0,0.25": {
+  "token HC (order-blind)": 0.9833333333333333,
+  "count psi* (key-only)": 1.0,
+  "oracle LLR psi*": 1.0,
+  "m": 23,
+  "delta": 0.07310536669968173
+ },
+ "3.0,0.3": {
+  "token HC (order-blind)": 0.5433333333333333,
+  "count psi* (key-only)": 1.0,
+  "oracle LLR psi*": 1.0,
+  "m": 12,
+  "delta": 0.07310536669968173
+ },
+ "3.0,0.35": {
+  "token HC (order-blind)": 0.17666666666666667,
+  "count psi* (key-only)": 1.0,
+  "oracle LLR psi*": 1.0,
+  "m": 6,
+  "delta": 0.07310536669968173
+ },
+ "3.0,0.4": {
+  "token HC (order-blind)": 0.09666666666666666,
+  "count psi* (key-only)": 0.9066666666666666,
+  "oracle LLR psi*": 0.9833333333333333,
+  "m": 3,
+  "delta": 0.07310536669968173
+ },
+ "3.0,0.45": {
+  "token HC (order-blind)": 0.08,
+  "count psi* (key-only)": 0.8266666666666667,
+  "oracle LLR psi*": 0.96,
+  "m": 2,
+  "delta": 0.07310536669968173
+ }
+}

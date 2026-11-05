@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="When does contiguity help watermark detection? Sharp phase diagrams for segment-surviving Gumbel-max watermarks.">
+  <meta name="keywords" content="LLM watermark, Gumbel-max, Higher Criticism, sparse mixture, phase diagram, hypothesis testing">
+  <title>When Does Contiguity Help Watermark Detection?</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.4/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"
+          onload="renderMathInElement(document.body, {delimiters: [{left: '\\(', right: '\\)', display: false}, {left: '\\[', right: '\\]', display: true}]});"></script>
+
+  <style>
+    /* Nerfies-style project page (layout after nerfies.github.io and the Academic Project Page Template). */
+    :root { --ink: #363636; --muted: #4a4a4a; --link: #3273dc; --wm: #e08a2c; --hum: #dcdcdc; }
+    body { font-family: 'Noto Sans', sans-serif; color: var(--ink); background: #ffffff; }
+    .publication-title { font-family: 'Noto Sans', sans-serif; font-weight: 700; line-height: 1.2; }
+    .publication-subtitle { font-weight: 400; color: var(--muted); margin-top: -0.6rem; }
+    .publication-authors { font-family: 'Noto Sans', sans-serif; }
+    .publication-authors a { color: var(--link) !important; }
+    .publication-authors a:hover { text-decoration: underline; }
+    .author-block { display: inline-block; margin: 0 0.35rem; }
+    .publication-venue { color: #555; width: fit-content; font-weight: 500; }
+    .link-block a { margin-top: 5px; margin-bottom: 5px; }
+    .hero-body { padding: 3rem 1.5rem; }
+    .teaser .hero-body { padding-top: 0; padding-bottom: 3rem; }
+    .section { padding: 2.5rem 1.5rem; }
+    .title.is-3 { margin-bottom: 1.25rem; }
+    .content p, .content li { line-height: 1.7; }
+    .figure-card img { width: 100%; height: auto; border-radius: 6px; }
+    .figure-caption { color: var(--muted); font-size: 0.95rem; margin-top: 0.5rem; text-align: left; }
+    .result-box { height: 100%; border-radius: 8px; padding: 1.1rem 1.25rem; background: #ffffff; }
+    .result-box h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.4rem; color: var(--ink); }
+    .result-box p { font-size: 0.97rem; line-height: 1.6; }
+    .result-num { color: var(--link); margin-right: 0.3rem; }
+    .strip-wrap { max-width: 760px; margin: 0 auto; }
+    .strip-label { font-size: 0.9rem; color: var(--muted); margin: 0.6rem 0 0.25rem; text-align: left; }
+    svg.strip { width: 100%; height: auto; display: block; }
+    .legend { font-size: 0.85rem; color: var(--muted); margin-top: 0.6rem; text-align: left; }
+    .sw { display: inline-block; width: 11px; height: 11px; border-radius: 2px; vertical-align: -1px; margin: 0 4px 0 10px; }
+    .sw:first-child { margin-left: 0; }
+    pre.bibtex { background: #f5f5f5; font-size: 0.85rem; white-space: pre-wrap; word-break: break-word; }
+    .footer { padding: 2.5rem 1.5rem; }
+    .footer .content { font-size: 0.85rem; color: var(--muted); }
+    @media (max-width: 768px) {
+      .publication-title { font-size: 1.9rem !important; }
+      .publication-subtitle { font-size: 1.15rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ============ Title, authors, links ============ -->
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">When Does Contiguity Help Watermark Detection?</h1>
+          <h2 class="subtitle is-4 publication-subtitle">Sharp Phase Diagrams for Segment-Surviving Gumbel-max Watermarks</h2>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">Elvin Lo,</span>
+            <span class="author-block">Gianfranco Randazzo,</span>
+            <span class="author-block">Bryan Fang,</span>
+            <span class="author-block">Evan Ho</span>
+          </div>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">Harvard University</span>
+          </div>
+          <div class="is-size-6 publication-authors" style="margin-top: 0.3rem;">
+            <span class="author-block publication-venue">Stat 236 Final Project, Fall 2026</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <span class="link-block">
+                <a href="static/pdfs/paper.pdf" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fas fa-file-pdf"></i></span><span>Paper</span>
+                </a>
+              </span>
+              <!-- Code: repository code/ folder -->
+              <span class="link-block">
+                <a href="https://github.com/elvinlo/watermark-text-detection/tree/main/code" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fab fa-github"></i></span><span>Code</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="#BibTeX" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fas fa-quote-right"></i></span><span>BibTeX</span>
+                </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Teaser: token strips ============ -->
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <div class="strip-wrap">
+        <div class="strip-label">Scattered survival (existing theory)</div>
+        <svg class="strip" id="s1" viewBox="0 0 600 22" role="img" aria-label="Tokens with scattered watermarked survivors"></svg>
+        <div class="strip-label">Segment survival (this project), same number of survivors</div>
+        <svg class="strip" id="s2" viewBox="0 0 600 22" role="img" aria-label="Tokens with survivors in contiguous segments"></svg>
+        <div class="legend"><span class="sw" style="background:var(--wm)"></span>still watermarked
+          <span class="sw" style="background:var(--hum)"></span>human-written or watermark destroyed</div>
+      </div>
+      <h2 class="subtitle has-text-centered" style="margin-top: 1.5rem;">
+        When people edit AI text sentence by sentence, the watermark survives in <b>contiguous chunks</b>.
+        Tests that ignore token order cannot use this; summing evidence within chunks and running
+        <b>Higher Criticism across chunks</b> can.
+      </h2>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Abstract ============ -->
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            A Gumbel-max watermark is detected from one &ldquo;pivot&rdquo; per token, which is uniform on text the
+            watermarked model did not produce and pushed toward \(1\) on text it did. After human editing, only a small
+            fraction of tokens keep the watermark. The existing optimal theory treats these survivors as scattered
+            independently, and its tests ignore token order. In practice, when a person rewrites some sentences and keeps
+            others, or pastes AI passages into their own writing, the survivors form contiguous segments. We keep the same
+            null hypothesis but let the alternative be &ldquo;the watermark survives in segments of at least \(\ell\)
+            tokens.&rdquo;
+          </p>
+          <p>
+            In an explicit theoretical sandbox we show: (i) tests that ignore token order are stuck at the old detection
+            boundary however long the segments are; (ii) contiguity helps exactly when one segment carries enough
+            evidence, measured by its expected log-likelihood ratio (for nearly deterministic text, the number of
+            non-greedy word choices it contains); (iii) at the critical scale, Higher Criticism applied across blocks of
+            tokens attains a sharp boundary, which reaches full detectability exactly when one segment's expected
+            log-likelihood ratio exceeds \(\log N\), the log of the number of blocks. A key-only count test captures most
+            of the gain, and simulations agree with the theory.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Setting ============ -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3 has-text-centered">The Setting</h2>
+        <div class="content has-text-justified">
+          <p>
+            A <b>Gumbel-max watermark</b> gives every token \(t\) a pivot \(Y_t\in[0,1]\): exactly uniform on
+            human-written text, and pushed toward \(1\) on text the watermarked model produced. Detection is a hypothesis
+            test on the pivots. After editing, only a fraction \(\varepsilon\) of tokens keep the watermark, which is the
+            rare/weak setting where Higher Criticism (HC) is the natural detector. The existing optimal theory
+            (Li, Ruan, Wang, Long &amp; Su, 2025) assumes the surviving tokens are scattered independently.
+          </p>
+          <p>
+            We keep the null hypothesis (no watermark anywhere) and change only the alternative: the watermark survives in
+            <b>runs of at least \(\ell\) tokens</b> covering a fraction \(\varepsilon\) of the text, in arbitrary positions.
+            The hardest such arrangement is &ldquo;each sentence-sized block survives independently&rdquo;: Li et al.'s
+            model one level up, with blocks in place of tokens. The sparsity is over <em>blocks</em>, which suggests the
+            detector: sum each block's evidence, then apply HC across blocks.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Main results ============ -->
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Main Results</h2>
+    <div class="columns is-multiline">
+      <div class="column is-half">
+        <div class="result-box"><h3><span class="result-num">1.</span>Order-blind tests are stuck</h3>
+          <p>Any test that depends only on the histogram of pivots (the sum test, token-level HC, Li et al.'s Tr-GoF) has
+          <em>exactly</em> the old detection boundary, however long the segments are. Shuffling the tokens does not change
+          what such a test sees.</p></div>
+      </div>
+      <div class="column is-half">
+        <div class="result-box"><h3><span class="result-num">2.</span>Contiguity = evidence per segment</h3>
+          <p>A token carries evidence only when the model had freedom of choice. Contiguity helps exactly when a segment
+          accumulates enough evidence, measured by its expected log-likelihood ratio (roughly, the number of non-greedy
+          word choices it contains).</p></div>
+      </div>
+      <div class="column is-half">
+        <div class="result-box"><h3><span class="result-num">3.</span>Sharp boundary for HC across blocks</h3>
+          <p>At the critical scale, HC across blocks attains an optimal boundary. It always beats order-blind tests and
+          reaches full detectability exactly when one segment's evidence exceeds \(\log N\), where \(N\) is the number of
+          blocks.</p></div>
+      </div>
+      <div class="column is-half">
+        <div class="result-box"><h3><span class="result-num">4.</span>A key-only test</h3>
+          <p>Counting near-1 pivots per block and running HC across blocks needs only the secret key, not the model's
+          probabilities, and recovers most of the gain.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Phase diagrams ============ -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Phase Diagrams</h2>
+    <div class="columns is-centered">
+      <div class="column">
+        <div class="figure-card">
+          <img src="static/images/coarse_phase.png" alt="Coarse phase diagram: segment survival adds a detectable region beyond the i.i.d. boundary">
+          <p class="figure-caption"><b>Coarse phase diagram.</b> Under scattered survival, detection is possible only in
+          the blue region. With segments longer than \(1/\Delta\), segment-aware tests also detect in the orange region,
+          where every order-blind test fails.</p>
+        </div>
+      </div>
+      <div class="column">
+        <div class="figure-card">
+          <img src="static/images/boundary_kl.png" alt="Sharp boundary against per-segment evidence for several next-token distributions">
+          <p class="figure-caption"><b>Sharp boundary vs. evidence per segment.</b> For several next-token distributions,
+          all curves start at the order-blind boundary and reach full detectability at the same point; in between,
+          &ldquo;spiky&rdquo; evidence is easier to detect than evenly spread evidence.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Simulations ============ -->
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Simulations</h2>
+    <div class="figure-card">
+      <img src="static/images/e1_seglen.png" alt="Power vs number of surviving tokens for four segment lengths">
+      <p class="figure-caption"><b>Segment length (n = 50,000).</b> Same number of surviving tokens, longer segments:
+      order-blind tests do not improve, while segment-aware tests go from no power to full power as the segments carry
+      more evidence.</p>
+    </div>
+    <div class="figure-card" style="margin-top: 2rem;">
+      <img src="static/images/e2_phase.png" alt="Finite-n power heatmaps over sparsity and evidence per segment">
+      <p class="figure-caption"><b>Finite-sample phase diagram (n = 2<sup>18</sup>).</b> Token-level HC detects only near
+      the old boundary, while HC across blocks keeps power far beyond it, even with only two watermarked segments.</p>
+    </div>
+    <div class="figure-card" style="margin-top: 2rem;">
+      <img src="static/images/e5_short.png" alt="Power at essay length n = 2000 for two evidence levels">
+      <p class="figure-caption"><b>Essay-length text (n = 2,000).</b> When a sentence carries enough evidence
+      (\(\Delta=0.4\), bottom row), four surviving sentences are detected with power 0.89 by the block test, against 0.29
+      for the sum test. In low-entropy text (\(\Delta=0.1\), top row) the gain appears only for paragraph-length
+      segments.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Takeaways ============ -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Takeaways and Limitations</h2>
+    <div class="content has-text-justified">
+      <ul>
+        <li>If edits are span-level, detectors should look at <b>where</b> the large pivots occur, not only how many
+        there are. Combining a block-level test with the classic sum test is a good default.</li>
+        <li>Low-entropy text (code, factual answers) carries little evidence per token, so contiguity helps there only for
+        long runs.</li>
+        <li>All results are within an explicit sandbox (independent pivots, an idealized segment model, asymptotics), and
+        all experiments are synthetic. Most simulations use long texts (50k+ tokens); the essay-length check above shows
+        the same mechanism at 2,000 tokens.</li>
+        <li><b>Next:</b> real-data experiments with GPT-2 and our own watermark key on news text, statistics abstracts and
+        code, measuring how much evidence real sentences carry, plus copy-paste and sentence-retention demos.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BibTeX ============ -->
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre class="bibtex"><code>@misc{lo2026contiguity,
+  title  = {When Does Contiguity Help Watermark Detection? Sharp Phase Diagrams
+            for Segment-Surviving Gumbel-max Watermarks},
+  author = {Lo, Elvin and Randazzo, Gianfranco and Fang, Bryan and Ho, Evan},
+  year   = {2026},
+  note   = {Stat 236 final project, Harvard University}
+}</code></pre>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content has-text-centered">
+          <p>
+            This page follows the layout of the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a>,
+            adapted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page, and is licensed under a
+            <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Token strips: 60 tokens, 12 survivors each; scattered vs. two contiguous segments.
+  function strip(id, on) {
+    var svg = document.getElementById(id), ns = "http://www.w3.org/2000/svg";
+    for (var i = 0; i < 60; i++) {
+      var r = document.createElementNS(ns, "rect");
+      r.setAttribute("x", i * 10 + 1); r.setAttribute("y", 2);
+      r.setAttribute("width", 8); r.setAttribute("height", 18); r.setAttribute("rx", 1.5);
+      r.setAttribute("fill", on.indexOf(i) >= 0 ? "var(--wm)" : "var(--hum)");
+      svg.appendChild(r);
+    }
+  }
+  strip("s1", [3, 9, 14, 22, 27, 31, 36, 40, 45, 49, 53, 58]);
+  strip("s2", [8, 9, 10, 11, 12, 13, 38, 39, 40, 41, 42, 43]);
+</script>
+</body>
+</html>

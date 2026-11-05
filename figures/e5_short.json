@@ -1,0 +1,156 @@
+{
+ "0.1,1,50": {
+  "sum": 0.0995,
+  "token HC": 0.0835,
+  "count psi*": 0.0545,
+  "combined (sum OR count psi*)": 0.082,
+  "oracle LLR psi*": 0.0755
+ },
+ "0.1,1,100": {
+  "sum": 0.164,
+  "token HC": 0.123,
+  "count psi*": 0.058,
+  "combined (sum OR count psi*)": 0.1115,
+  "oracle LLR psi*": 0.085
+ },
+ "0.1,1,200": {
+  "sum": 0.333,
+  "token HC": 0.206,
+  "count psi*": 0.0865,
+  "combined (sum OR count psi*)": 0.2355,
+  "oracle LLR psi*": 0.14
+ },
+ "0.1,1,400": {
+  "sum": 0.749,
+  "token HC": 0.5475,
+  "count psi*": 0.2285,
+  "combined (sum OR count psi*)": 0.627,
+  "oracle LLR psi*": 0.3715
+ },
+ "0.1,25,50": {
+  "sum": 0.1065,
+  "token HC": 0.085,
+  "count psi*": 0.0965,
+  "combined (sum OR count psi*)": 0.103,
+  "oracle LLR psi*": 0.1045
+ },
+ "0.1,25,100": {
+  "sum": 0.164,
+  "token HC": 0.123,
+  "count psi*": 0.1405,
+  "combined (sum OR count psi*)": 0.1565,
+  "oracle LLR psi*": 0.155
+ },
+ "0.1,25,200": {
+  "sum": 0.3275,
+  "token HC": 0.2025,
+  "count psi*": 0.259,
+  "combined (sum OR count psi*)": 0.314,
+  "oracle LLR psi*": 0.3435
+ },
+ "0.1,25,400": {
+  "sum": 0.7485,
+  "token HC": 0.535,
+  "count psi*": 0.543,
+  "combined (sum OR count psi*)": 0.698,
+  "oracle LLR psi*": 0.6925
+ },
+ "0.1,100,100": {
+  "sum": 0.1425,
+  "token HC": 0.104,
+  "count psi*": 0.2305,
+  "combined (sum OR count psi*)": 0.2255,
+  "oracle LLR psi*": 0.3515
+ },
+ "0.1,100,200": {
+  "sum": 0.2795,
+  "token HC": 0.189,
+  "count psi*": 0.3865,
+  "combined (sum OR count psi*)": 0.3875,
+  "oracle LLR psi*": 0.558
+ },
+ "0.1,100,400": {
+  "sum": 0.7255,
+  "token HC": 0.5185,
+  "count psi*": 0.6705,
+  "combined (sum OR count psi*)": 0.7405,
+  "oracle LLR psi*": 0.858
+ },
+ "0.4,1,50": {
+  "sum": 0.148,
+  "token HC": 0.0785,
+  "count psi*": 0.044,
+  "combined (sum OR count psi*)": 0.0845,
+  "oracle LLR psi*": 0.042
+ },
+ "0.4,1,100": {
+  "sum": 0.29,
+  "token HC": 0.1435,
+  "count psi*": 0.063,
+  "combined (sum OR count psi*)": 0.1875,
+  "oracle LLR psi*": 0.0485
+ },
+ "0.4,1,200": {
+  "sum": 0.694,
+  "token HC": 0.432,
+  "count psi*": 0.073,
+  "combined (sum OR count psi*)": 0.5175,
+  "oracle LLR psi*": 0.1565
+ },
+ "0.4,1,400": {
+  "sum": 0.997,
+  "token HC": 0.973,
+  "count psi*": 0.5555,
+  "combined (sum OR count psi*)": 0.9855,
+  "oracle LLR psi*": 0.7705
+ },
+ "0.4,25,50": {
+  "sum": 0.1275,
+  "token HC": 0.084,
+  "count psi*": 0.34,
+  "combined (sum OR count psi*)": 0.328,
+  "oracle LLR psi*": 0.561
+ },
+ "0.4,25,100": {
+  "sum": 0.289,
+  "token HC": 0.167,
+  "count psi*": 0.617,
+  "combined (sum OR count psi*)": 0.617,
+  "oracle LLR psi*": 0.8875
+ },
+ "0.4,25,200": {
+  "sum": 0.692,
+  "token HC": 0.4695,
+  "count psi*": 0.9425,
+  "combined (sum OR count psi*)": 0.9475,
+  "oracle LLR psi*": 0.9995
+ },
+ "0.4,25,400": {
+  "sum": 0.9965,
+  "token HC": 0.9765,
+  "count psi*": 1.0,
+  "combined (sum OR count psi*)": 1.0,
+  "oracle LLR psi*": 1.0
+ },
+ "0.4,100,100": {
+  "sum": 0.2835,
+  "token HC": 0.13,
+  "count psi*": 0.9805,
+  "combined (sum OR count psi*)": 0.97,
+  "oracle LLR psi*": 1.0
+ },
+ "0.4,100,200": {
+  "sum": 0.7205,
+  "token HC": 0.443,
+  "count psi*": 1.0,
+  "combined (sum OR count psi*)": 1.0,
+  "oracle LLR psi*": 1.0
+ },
+ "0.4,100,400": {
+  "sum": 0.994,
+  "token HC": 0.9725,
+  "count psi*": 1.0,
+  "combined (sum OR count psi*)": 1.0,
+  "oracle LLR psi*": 1.0
+ }
+}

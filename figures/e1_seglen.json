@@ -1,0 +1,100 @@
+{
+ "1,100": {
+  "sum": 0.0425,
+  "token HC": 0.065,
+  "count psi*": 0.0625,
+  "combined (sum OR count psi*)": 0.06,
+  "oracle LLR psi*": 0.03
+ },
+ "1,200": {
+  "sum": 0.05,
+  "token HC": 0.0825,
+  "count psi*": 0.0575,
+  "combined (sum OR count psi*)": 0.0675,
+  "oracle LLR psi*": 0.035
+ },
+ "1,400": {
+  "sum": 0.075,
+  "token HC": 0.055,
+  "count psi*": 0.07,
+  "combined (sum OR count psi*)": 0.095,
+  "oracle LLR psi*": 0.035
+ },
+ "1,800": {
+  "sum": 0.2125,
+  "token HC": 0.0975,
+  "count psi*": 0.09,
+  "combined (sum OR count psi*)": 0.1825,
+  "oracle LLR psi*": 0.035
+ },
+ "25,100": {
+  "sum": 0.0725,
+  "token HC": 0.03,
+  "count psi*": 0.045,
+  "combined (sum OR count psi*)": 0.0625,
+  "oracle LLR psi*": 0.0475
+ },
+ "25,200": {
+  "sum": 0.115,
+  "token HC": 0.035,
+  "count psi*": 0.05,
+  "combined (sum OR count psi*)": 0.095,
+  "oracle LLR psi*": 0.06
+ },
+ "25,400": {
+  "sum": 0.1175,
+  "token HC": 0.0525,
+  "count psi*": 0.1,
+  "combined (sum OR count psi*)": 0.1375,
+  "oracle LLR psi*": 0.125
+ },
+ "25,800": {
+  "sum": 0.235,
+  "token HC": 0.075,
+  "count psi*": 0.17,
+  "combined (sum OR count psi*)": 0.2375,
+  "oracle LLR psi*": 0.235
+ },
+ "100,100": {
+  "sum": 0.08,
+  "token HC": 0.0525,
+  "count psi*": 0.08,
+  "combined (sum OR count psi*)": 0.085,
+  "oracle LLR psi*": 0.1375
+ },
+ "100,200": {
+  "sum": 0.0875,
+  "token HC": 0.08,
+  "count psi*": 0.1375,
+  "combined (sum OR count psi*)": 0.1325,
+  "oracle LLR psi*": 0.225
+ },
+ "100,400": {
+  "sum": 0.145,
+  "token HC": 0.0825,
+  "count psi*": 0.2225,
+  "combined (sum OR count psi*)": 0.2,
+  "oracle LLR psi*": 0.455
+ },
+ "100,800": {
+  "sum": 0.26,
+  "token HC": 0.1325,
+  "count psi*": 0.4225,
+  "combined (sum OR count psi*)": 0.4125,
+  "oracle LLR psi*": 0.7
+ },
+ "400,400": {
+  "sum": 0.125,
+  "token HC": 0.11,
+  "count psi*": 0.715,
+  "combined (sum OR count psi*)": 0.675,
+  "oracle LLR psi*": 0.91
+ },
+ "400,800": {
+  "sum": 0.2375,
+  "token HC": 0.1275,
+  "count psi*": 0.91,
+  "combined (sum OR count psi*)": 0.8775,
+  "oracle LLR psi*": 1.0
+ }
+}
