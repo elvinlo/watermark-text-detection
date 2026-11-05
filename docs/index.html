@@ -44,6 +44,9 @@
     .legend { font-size: 0.85rem; color: var(--muted); margin-top: 0.6rem; text-align: left; }
     .sw { display: inline-block; width: 11px; height: 11px; border-radius: 2px; vertical-align: -1px; margin: 0 4px 0 10px; }
     .sw:first-child { margin-left: 0; }
+    table.notation { margin: 0.5rem auto 0; font-size: 0.95rem; background: transparent; }
+    table.notation td { text-align: left; }
+    table.notation td:first-child { white-space: nowrap; padding-right: 1.25rem; }
     .footer { padding: 2.5rem 1.5rem; }
     .footer .content { font-size: 0.85rem; color: var(--muted); }
     @media (max-width: 768px) {
@@ -169,6 +172,30 @@
             model one level up, with blocks in place of tokens. The sparsity is over <em>blocks</em>, which suggests the
             detector: sum each block's evidence, then apply HC across blocks.
           </p>
+          <p>
+            <b>How much evidence does a token carry?</b> It depends on the model's next-word probabilities. If the model
+            was nearly certain of the next word, the watermark had nothing to choose and the pivot looks almost uniform. We
+            write \(\Delta\) for the probability that the model does <em>not</em> pick its top word; such a choice is an
+            &ldquo;event&rdquo;, and events are where the evidence comes from. In the simplest (&ldquo;two-point&rdquo;)
+            case, the top word has probability \(1-\Delta\) and one alternative has probability \(\Delta\), so a segment of
+            \(\ell\) tokens contains about \(\ell\Delta\) events.
+          </p>
+          <p>
+            <b>Phase diagrams.</b> As in the Rare/Weak model from class, we let the parameters scale as powers of the text
+            length \(n\) and ask, as \(n\to\infty\), for which exponents detection is possible. The answer is a region in
+            the plane of exponents, with a sharp boundary between &ldquo;some test succeeds&rdquo; and &ldquo;every test
+            fails&rdquo;.
+          </p>
+          <table class="table is-narrow notation">
+            <tbody>
+              <tr><td>\(n\)</td><td>number of tokens in the text</td></tr>
+              <tr><td>\(\varepsilon = n^{-p}\)</td><td>fraction of tokens that keep the watermark; larger \(p\) means sparser</td></tr>
+              <tr><td>\(\Delta = n^{-q}\)</td><td>chance the model does not pick its top word; larger \(q\) means rarer events</td></tr>
+              <tr><td>\(\ell = n^{\gamma}\)</td><td>length of a surviving segment (a sentence or paragraph)</td></tr>
+              <tr><td>\(N = n/\ell = n^{a}\)</td><td>number of blocks the detector splits the text into</td></tr>
+              <tr><td>\(\mathrm{KL}\)</td><td>expected evidence (log-likelihood ratio) per watermarked token, so \(\ell\cdot\mathrm{KL}\) is the evidence per segment</td></tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
@@ -215,17 +242,24 @@
       <div class="column">
         <div class="figure-card">
           <img src="static/images/coarse_phase.png" alt="Coarse phase diagram: segment survival adds a detectable region beyond the i.i.d. boundary">
-          <p class="figure-caption"><b>Coarse phase diagram.</b> Under scattered survival, detection is possible only in
-          the blue region. With segments longer than \(1/\Delta\), segment-aware tests also detect in the orange region,
-          where every order-blind test fails.</p>
+          <p class="figure-caption"><b>Coarse phase diagram.</b> Axes: how sparse the surviving watermark is (\(p\)) and
+          how rare events are (\(q\)). Left: with scattered survival, detection is possible only below the line
+          \(2p+q=1\) (blue). Right: with segments of length \(\ell=n^{0.4}\), segment-aware tests also detect in the
+          orange region, where each segment contains many events (\(\ell\Delta\to\infty\), i.e. \(\gamma>q\)) and every
+          order-blind test fails. In the gray region there is less than one segment's worth of watermark.</p>
         </div>
       </div>
       <div class="column">
         <div class="figure-card">
           <img src="static/images/boundary_kl.png" alt="Sharp boundary against per-segment evidence for several next-token distributions">
-          <p class="figure-caption"><b>Sharp boundary vs. evidence per segment.</b> For several next-token distributions,
-          all curves start at the order-blind boundary and reach full detectability at the same point; in between,
-          &ldquo;spiky&rdquo; evidence is easier to detect than evenly spread evidence.</p>
+          <p class="figure-caption"><b>Sharp boundary vs. evidence per segment.</b> The vertical axis is the sparsest
+          detectable watermark (largest \(p\)); the horizontal axis is the evidence per segment, \(\lambda =
+          \ell\cdot\mathrm{KL}/\log n\). Here segments are short (\(\ell\propto\log n\)), so there are about \(n\) blocks and
+          order-blind tests stop at \(p=1/2\) (dotted line). Each curve fixes the model's next-word probabilities, from a
+          near-certain top word with rare alternatives (purple) to 20 equally likely words (red). All curves start at the
+          order-blind boundary and reach full detectability once a segment's evidence exceeds \(\log N\) (\(\lambda=1\)).
+          In between, evidence that arrives in rare large bursts is easier to detect than evidence that arrives
+          steadily.</p>
         </div>
       </div>
     </div>
@@ -236,20 +270,47 @@
 <section class="section hero is-light">
   <div class="container is-max-desktop">
     <h2 class="title is-3 has-text-centered">Simulations</h2>
+    <div class="content has-text-justified">
+      <p>
+        We simulate pivots directly: uniform on unwatermarked tokens, and from the watermark law on the surviving set,
+        which is either scattered at random (\(\ell=1\)) or made of runs of length \(\ell\). Power is the fraction of
+        watermarked texts detected, at false-positive rate 0.05. The panels compare:
+      </p>
+      <ul>
+        <li><b>Order-blind tests:</b> <em>sum</em> (the standard Gumbel-max detector) and <em>token HC</em> (HC over all
+        tokens).</li>
+        <li><b>Segment-aware tests (psi*):</b> split the text into blocks of length \(\ell\), compute a p-value per block,
+        and run HC across blocks (plus a Bonferroni check). <em>Count psi*</em> counts near-1 pivots per block and needs
+        only the key; <em>oracle LLR psi*</em> uses the exact block likelihood ratio, which needs the model's
+        probabilities.</li>
+        <li><b>Combined:</b> rejects if either the sum test or count psi* does.</li>
+      </ul>
+      <p>
+        In these runs the block tests use the true segment length and block boundaries, a best case for them; the paper
+        reports a check without this knowledge.
+      </p>
+    </div>
     <div class="figure-card">
       <img src="static/images/e1_seglen.png" alt="Power vs number of surviving tokens for four segment lengths">
-      <p class="figure-caption"><b>Segment length (n = 50,000).</b> Same number of surviving tokens, longer segments:
-      order-blind tests do not improve, while segment-aware tests go from no power to full power as the segments carry
-      more evidence.</p>
+      <p class="figure-caption"><b>Segment length (\(n = 50{,}000\), \(\Delta=0.1\)).</b> Each panel is one test; the
+      horizontal axis is the number of surviving tokens, and each color is a segment length \(\ell\) (&ldquo;ev/seg&rdquo;
+      is the expected number of events per segment, \(\ell\Delta\)). With the same number of surviving tokens, longer
+      segments do not help the order-blind tests (left two panels), while segment-aware tests go from no power to full
+      power as the segments carry more events.</p>
     </div>
     <div class="figure-card" style="margin-top: 2rem;">
       <img src="static/images/e2_phase.png" alt="Finite-n power heatmaps over sparsity and evidence per segment">
-      <p class="figure-caption"><b>Finite-sample phase diagram (n = 2<sup>18</sup>).</b> Token-level HC detects only near
-      the old boundary, while HC across blocks keeps power far beyond it, even with only two watermarked segments.</p>
+      <p class="figure-caption"><b>Finite-sample phase diagram (\(n = 2^{18}\), blocks of \(\ell=512\) tokens).</b> Each
+      cell shows the power at one sparsity \(p\) (vertical; higher is sparser) and one evidence level \(\kappa\)
+      (horizontal; each segment contains about \(\kappa\log n\) events). Red curves are the asymptotic boundaries from our
+      theory, for the oracle (solid) and key-only (dashed) tests: detection should succeed below them. The white dotted
+      line is where order-blind tests stop. Token HC (left) detects only near that line, while HC across blocks keeps power
+      far beyond it, even with only two watermarked segments (top row).</p>
     </div>
     <div class="figure-card" style="margin-top: 2rem;">
       <img src="static/images/e5_short.png" alt="Power at essay length n = 2000 for two evidence levels">
-      <p class="figure-caption"><b>Essay-length text (n = 2,000).</b> When a sentence carries enough evidence
+      <p class="figure-caption"><b>Essay-length text (\(n = 2{,}000\)).</b> Same layout as the segment-length figure, with
+      two evidence levels: \(\Delta=0.1\) (top) and \(\Delta=0.4\) (bottom). When a sentence carries enough evidence
       (\(\Delta=0.4\), bottom row), four surviving sentences are detected with power 0.89 by the block test, against 0.29
       for the sum test. In low-entropy text (\(\Delta=0.1\), top row) the gain appears only for paragraph-length
       segments.</p>
