@@ -1,0 +1,26 @@
+{
+ "1": {
+  "sum": 0.2925,
+  "token HC": 0.205,
+  "count psi* (unknown Delta)": 0.08,
+  "combined (sum OR count psi*)": 0.17
+ },
+ "25": {
+  "sum": 0.2625,
+  "token HC": 0.1625,
+  "count psi* (unknown Delta)": 0.25,
+  "combined (sum OR count psi*)": 0.3175
+ },
+ "100": {
+  "sum": 0.3975,
+  "token HC": 0.155,
+  "count psi* (unknown Delta)": 0.85,
+  "combined (sum OR count psi*)": 0.7975
+ },
+ "400": {
+  "sum": 0.3825,
+  "token HC": 0.2925,
+  "count psi* (unknown Delta)": 1.0,
+  "combined (sum OR count psi*)": 1.0
+ }
+}
